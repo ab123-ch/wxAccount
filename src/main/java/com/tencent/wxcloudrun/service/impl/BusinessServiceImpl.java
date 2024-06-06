@@ -1,5 +1,6 @@
 package com.tencent.wxcloudrun.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.tencent.wxcloudrun.model.Business;
 import com.tencent.wxcloudrun.dao.BusinessMapper;
 import com.tencent.wxcloudrun.service.BusinessService;
@@ -40,7 +41,8 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
 
     @Override
     public List<Business> getBusiness(HttpServletRequest request) {
-        log.info("进入接口：{}",request.getHeaderNames());
+        log.info("进入接口1111：{}", JSON.toJSONString(request.getHeaderNames()));
+        log.info("进入接口2222：{}", JSON.toJSONString(request));
         return this.getBaseMapper().selectAllBusiness();
     }
 

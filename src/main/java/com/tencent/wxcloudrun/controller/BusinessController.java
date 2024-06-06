@@ -7,6 +7,8 @@ import com.tencent.wxcloudrun.vo.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * <p>
  *  前端控制器
@@ -38,9 +40,9 @@ public class BusinessController {
      * @return
      */
     @GetMapping("/getBusiness")
-    public RestResponse getBusiness(){
+    public RestResponse getBusiness(HttpServletRequest request){
 
-        return RestResponse.Success(businessService.getBusiness());
+        return RestResponse.Success(businessService.getBusiness(request));
     }
 
     /**

@@ -44,7 +44,7 @@ public class BusinessController {
     @GetMapping("/getBusiness")
     public RestResponse getBusiness(HttpServletRequest request){
 
-        return RestResponse.Success(businessService.getBusiness(request));
+        return RestResponse.Success("aaaaa");
     }
 
     /**

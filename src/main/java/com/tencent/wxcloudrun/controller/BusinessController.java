@@ -5,6 +5,7 @@ import com.tencent.wxcloudrun.model.Business;
 import com.tencent.wxcloudrun.service.BusinessService;
 import com.tencent.wxcloudrun.vo.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/business")
+@Async
 public class BusinessController {
 
     @Autowired

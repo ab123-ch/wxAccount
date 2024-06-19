@@ -1,12 +1,14 @@
 package com.tencent.wxcloudrun.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.tencent.wxcloudrun.model.Business;
 import com.tencent.wxcloudrun.dao.BusinessMapper;
 import com.tencent.wxcloudrun.service.BusinessService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ import java.util.Objects;
  * @since 2024-06-04
  */
 @Service
+@Slf4j
 public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> implements BusinessService {
 
 
@@ -37,7 +40,9 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     }
 
     @Override
-    public List<Business> getBusiness() {
+    public List<Business> getBusiness(HttpServletRequest request) {
+        log.info("进入接口1111：{}", JSON.toJSONString(request.getHeaderNames()));
+        log.info("进入接口2222：{}", JSON.toJSONString(request));
         return this.getBaseMapper().selectAllBusiness();
     }
 

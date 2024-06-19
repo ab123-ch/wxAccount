@@ -3,6 +3,7 @@ package com.tencent.wxcloudrun.service;
 import com.tencent.wxcloudrun.model.Business;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
 public interface BusinessService extends IService<Business> {
     void saveBusiness(Business business);
 
-    List<Business> getBusiness();
+    List<Business> getBusiness(HttpServletRequest request);
 
     List<Business> getConfirmBusiness(Boolean enable);
 

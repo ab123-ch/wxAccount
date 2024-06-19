@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,7 +29,7 @@ public class Product implements Serializable {
     @TableField("product_name")
     private String productName;
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
 
 }

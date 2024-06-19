@@ -41,8 +41,6 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
 
     @Override
     public List<Business> getBusiness(HttpServletRequest request) {
-        log.info("进入接口1111：{}", JSON.toJSONString(request.getHeaderNames()));
-        log.info("进入接口2222：{}", JSON.toJSONString(request));
         return this.getBaseMapper().selectAllBusiness();
     }
 

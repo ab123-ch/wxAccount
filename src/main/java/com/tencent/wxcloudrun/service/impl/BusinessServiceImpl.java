@@ -31,6 +31,7 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
             throw new RuntimeException("保存信息不能为空");
         }
         business.setEnable(Boolean.FALSE);
+        log.info(JSON.toJSONString(business));
         if(Objects.isNull(business.getId())){
             this.getBaseMapper().insert(business);
         }else{

@@ -8,7 +8,7 @@ spring:
 #    url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:account}
 #    username: ${MYSQL_USERNAME}
 #    password: ${MySQL_PASSWORD}
-    url: jdbc:mysql://sh-cynosdbmysql-grp-0o8vvvpw.sql.tencentcdb.com:20551/${MYSQL_DATABASE:account}
+    url: jdbc:mysql://sh-cynosdbmysql-grp-0o8vvvpw.sql.tencentcdb.com:20551/${MYSQL_DATABASE:account}?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: Chenhu4399
   mvc:

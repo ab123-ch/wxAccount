@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -49,8 +50,12 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     private void checkData(Product product) {
         product.setCreateTime(new Date());
         String productName = product.getProductName();
+        BigDecimal amount = product.getAmount();
         if(StringUtils.isEmpty(productName)){
             throw new RuntimeException("项目名称不能为空");
+        }
+        if(Objects.isNull(amount)){
+            throw new RuntimeException("金额不能为空");
         }
         product.setProductName(productName.trim());
         Integer count = productMapper.selectByName(product.getProductName());

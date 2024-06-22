@@ -10,6 +10,7 @@
         select
             id,
             product_name,
+            amount,
             create_time
         from
             product

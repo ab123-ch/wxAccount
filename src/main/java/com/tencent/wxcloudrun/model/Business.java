@@ -3,16 +3,15 @@ package com.tencent.wxcloudrun.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-import java.util.Date;
-
 import com.tencent.wxcloudrun.aop.BooleanToSmallintTypeHandler;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * <p>
@@ -59,6 +58,9 @@ public class Business implements Serializable {
 
     @TableField("modify_user_id")
     private Integer updateUserId;
+
+    @TableField("amount")
+    private BigDecimal amount;
 
     @TableField(exist = false)
     private Integer userName;

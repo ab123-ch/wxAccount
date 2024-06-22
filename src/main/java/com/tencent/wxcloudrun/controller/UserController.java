@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 
-public class IndexController {
+public class UserController {
 
   /**
    * 主页页面

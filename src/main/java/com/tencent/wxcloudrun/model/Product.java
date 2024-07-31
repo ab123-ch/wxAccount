@@ -3,12 +3,12 @@ package com.tencent.wxcloudrun.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -28,6 +28,8 @@ public class Product implements Serializable {
     private Integer id;
     @TableField("product_name")
     private String productName;
+    @TableField("amount")
+    private BigDecimal amount;
     @TableField("create_time")
     private Date createTime;
 

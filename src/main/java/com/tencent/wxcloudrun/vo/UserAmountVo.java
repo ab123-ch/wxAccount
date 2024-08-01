@@ -1,8 +1,10 @@
 package com.tencent.wxcloudrun.vo;
 
+import com.tencent.wxcloudrun.dto.Amount;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class UserAmountVo implements Serializable {
@@ -12,6 +14,6 @@ public class UserAmountVo implements Serializable {
 
     private String remark;
 
-//    private List<Amount> amountList;
+    private List<Amount> amountList;
 
 }

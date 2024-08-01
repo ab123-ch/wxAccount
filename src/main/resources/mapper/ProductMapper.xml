@@ -20,4 +20,21 @@
             </if>
         </where>
     </select>
+
+    <select id="getProductByUserInfo" resultType="com.tencent.wxcloudrun.model.Product">
+        select
+            id,
+            product_name,
+            amount,
+            create_time
+        from
+            product
+        where
+            (open_id = #{user.openId}
+            or union_id = #{user.unionId})
+        <if test="name != null and name != ''">
+            and product_name like concat('%',#{name},'%')
+        </if>
+
+    </select>
 </mapper>

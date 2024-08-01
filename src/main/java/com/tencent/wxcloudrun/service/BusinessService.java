@@ -2,6 +2,8 @@ package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.model.Business;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.tencent.wxcloudrun.model.User;
+import com.tencent.wxcloudrun.vo.UserAmountVo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,4 +24,6 @@ public interface BusinessService extends IService<Business> {
     List<Business> getConfirmBusiness(Boolean enable);
 
     void modifyConfirmBusiness(Boolean enable,Integer id);
+
+    List<UserAmountVo> getUserAmount(User user);
 }

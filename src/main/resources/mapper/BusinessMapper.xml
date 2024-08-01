@@ -9,6 +9,7 @@
                count,
                time,
                enable,
+               amount,
                create_time,
                modify_time,
                create_user_id,
@@ -22,6 +23,13 @@
 
     <select id="selectConfirmBusiness" resultType="com.tencent.wxcloudrun.model.Business">
         select <include refid="fields"/>
+        from account.business
+        where enable = #{enable}
+    </select>
+
+    <select id="getUserAmountTotal" resultType="com.tencent.wxcloudrun.vo.UserAmountVo">
+        select
+
         from account.business
         where enable = #{enable}
     </select>

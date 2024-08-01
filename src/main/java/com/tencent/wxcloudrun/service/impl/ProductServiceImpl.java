@@ -1,7 +1,9 @@
 package com.tencent.wxcloudrun.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.tencent.wxcloudrun.model.Product;
 import com.tencent.wxcloudrun.dao.ProductMapper;
+import com.tencent.wxcloudrun.model.User;
 import com.tencent.wxcloudrun.service.ProductService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
@@ -45,6 +47,15 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public List<Product> getProduct(String name) {
         return productMapper.getProduct(name);
 
+    }
+
+    @Override
+    public List<Product> getProductByUserInfo(String name, User user) {
+        List<Product> products = productMapper.getProductByUserInfo(name, user);
+        if(CollectionUtils.isEmpty(products)){
+            return this.getProduct(name);
+        }
+        return products;
     }
 
     private void checkData(Product product) {

@@ -3,9 +3,16 @@ package com.tencent.wxcloudrun.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.tencent.wxcloudrun.model.Business;
 import com.tencent.wxcloudrun.dao.BusinessMapper;
+import com.tencent.wxcloudrun.model.Product;
+import com.tencent.wxcloudrun.model.User;
 import com.tencent.wxcloudrun.service.BusinessService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.tencent.wxcloudrun.service.ProductService;
+import com.tencent.wxcloudrun.utils.UserConfigUtil;
+import com.tencent.wxcloudrun.utils.UserUtil;
+import com.tencent.wxcloudrun.vo.UserAmountVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +31,15 @@ import java.util.Objects;
 @Slf4j
 public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> implements BusinessService {
 
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private UserUtil userUtil;
 
     @Override
     public void saveBusiness(Business business) {
+        User user = userUtil.getUser();
         if(Objects.isNull(business)){
             throw new RuntimeException("保存信息不能为空");
         }
@@ -48,6 +61,12 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     @Override
     public List<Business> getConfirmBusiness(Boolean enable) {
         return this.getBaseMapper().selectConfirmBusiness(enable?1:0);
+    }
+
+    @Override
+    public List<UserAmountVo> getUserAmount(User user) {
+        List<UserAmountVo> userAmountVos = this.getBaseMapper().getUserAmountTotal(user);
+        return this.getBaseMapper().getUserAmount(user);
     }
 
     @Override

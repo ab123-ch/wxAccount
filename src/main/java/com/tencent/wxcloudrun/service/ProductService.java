@@ -2,6 +2,7 @@ package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.model.Product;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.tencent.wxcloudrun.model.User;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface ProductService extends IService<Product> {
     void saveInfo(Product product);
 
     List<Product> getProduct(String name);
+
+    List<Product> getProductByUserInfo(String name, User user);
 }

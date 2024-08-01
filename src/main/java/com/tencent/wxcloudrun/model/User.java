@@ -38,13 +38,13 @@ public class User implements Serializable {
     /**
      * 微信openId
      */
-    @TableField("openId")
+    @TableField("open_id")
     private String openId;
 
     /**
      * 微信unionId
      */
-    @TableField("unionId")
+    @TableField("union_id")
     private String unionId;
 
 

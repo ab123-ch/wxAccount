@@ -28,7 +28,6 @@ public class UserAmountController {
     @PostMapping("/getUserAmount")
     public RestResponse getUserAmount() {
         User user = userUtil.getUser();
-//        businessService.getUserAmount(user);
-        return RestResponse.Success();
+        return RestResponse.Success(businessService.getUserAmount(user));
     }
 }

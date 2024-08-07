@@ -10,10 +10,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tencent.wxcloudrun.service.ProductService;
 import com.tencent.wxcloudrun.utils.UserConfigUtil;
 import com.tencent.wxcloudrun.utils.UserUtil;
+import com.tencent.wxcloudrun.vo.BusinessEventVo;
 import com.tencent.wxcloudrun.vo.UserAmountVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -37,6 +40,9 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     @Autowired
     private UserUtil userUtil;
 
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
+
     @Override
     public void saveBusiness(Business business) {
         User user = userUtil.getUser();
@@ -50,7 +56,7 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
         }else{
             this.getBaseMapper().updateById(business);
         }
-
+        applicationEventPublisher.publishEvent(new BusinessEventVo(this).setBusinessName(business.getBusinessName()).setUser(userUtil.getUser()));
     }
 
     @Override

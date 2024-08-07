@@ -24,4 +24,8 @@ public class UserUtil implements Serializable {
         }
         return null;
     }
+
+    public UserDto getUserDto(){
+        return UserConfigUtil.getUser();
+    }
 }

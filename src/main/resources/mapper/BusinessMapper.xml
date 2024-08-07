@@ -28,10 +28,33 @@
     </select>
 
     <select id="getUserAmountTotal" resultType="com.tencent.wxcloudrun.vo.UserAmountVo">
-        select
+        SELECT
+            user_id,
+            time,
+            sum(count * amount) as amount
+        FROM
+            account.business main
+                left join user u on main.user_id = u.id
+        WHERE
+            ENABLE = 0
+        group by
+            user_id,
+            time
+    </select>
 
-        from account.business
-        where enable = #{enable}
+    <select id="getUserAmount" resultType="com.tencent.wxcloudrun.vo.UserAmountVo">
+        SELECT
+            user_id,
+            time,
+            sum(count * amount) as amount
+        FROM
+            account.business main
+                left join user u on main.user_id = u.id
+        WHERE
+            ENABLE = 0
+        group by
+            user_id,
+            time
     </select>
 
     <update id="modifyConfirmBusiness">

@@ -4,6 +4,7 @@ package com.tencent.wxcloudrun.controller;
 import com.tencent.wxcloudrun.model.Business;
 import com.tencent.wxcloudrun.service.BusinessService;
 import com.tencent.wxcloudrun.vo.RestResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/business")
 @Async
+@Slf4j
 public class BusinessController {
 
     @Autowired
@@ -63,6 +65,7 @@ public class BusinessController {
      */
     @GetMapping("/modifyConfirmBusiness")
     public RestResponse modifyConfirmBusiness(@RequestParam("enable")Boolean enable,@RequestParam("id")Integer id){
+        log.info("enable>>>>" + enable + "，，，，，，" + id);
         businessService.modifyConfirmBusiness(enable,id);
         return RestResponse.Success();
     }

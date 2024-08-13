@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<User> {
 
     void save(User user, UserDto userDto);
+
+    User getUserInfo(UserDto user);
 }

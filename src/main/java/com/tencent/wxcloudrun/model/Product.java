@@ -30,6 +30,8 @@ public class Product implements Serializable {
     private String productName;
     @TableField("amount")
     private BigDecimal amount;
+    @TableField("userId")
+    private Integer userId;
     @TableField("create_time")
     private Date createTime;
 

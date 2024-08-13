@@ -6,6 +6,7 @@ import com.tencent.wxcloudrun.dto.UserDto;
 import com.tencent.wxcloudrun.model.User;
 import com.tencent.wxcloudrun.service.UserService;
 import com.tencent.wxcloudrun.utils.UserUtil;
+import com.tencent.wxcloudrun.vo.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,12 @@ public class UserController {
             UserDto userDto = userUtil.getUserDto();
             userService.save(user,userDto);
         }
+    }
+
+    @GetMapping("/getUserInfo")
+    public RestResponse<User> getUserInfo(){
+        UserDto userDto = userUtil.getUserDto();
+        return RestResponse.Success(userService.getUserInfo(userDto));
     }
 
 }

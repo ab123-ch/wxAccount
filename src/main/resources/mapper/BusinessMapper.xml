@@ -57,6 +57,28 @@
             time
     </select>
 
+
+    <select id="getUserAmountDetail" resultType="com.tencent.wxcloudrun.vo.AmountVo">
+        SELECT
+            user_id,
+            -- 	user_name,
+            time,
+            sum(amounts)
+        FROM
+            (
+            SELECT
+            user_id,
+            -- 	user_name,
+            time,
+            round(count * amount,3) as amounts
+            FROM `business`
+            )main
+        group by
+            user_id,
+            -- 	user_name,
+            time
+    </select>
+
     <update id="modifyConfirmBusiness">
         update account.business set enable = #{enable} where id = #{id}
     </update>

@@ -14,4 +14,8 @@
         </where>
     </select>
 
+    <select id="getAllUserInfo" resultType="com.tencent.wxcloudrun.model.User">
+        select * from user
+    </select>
+
 </mapper>

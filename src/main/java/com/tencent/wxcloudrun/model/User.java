@@ -1,12 +1,13 @@
 package com.tencent.wxcloudrun.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -29,7 +30,7 @@ public class User implements Serializable {
 
     private String password;
 
-    private String realname;
+    private String role;
 
     private LocalDateTime createTime;
 

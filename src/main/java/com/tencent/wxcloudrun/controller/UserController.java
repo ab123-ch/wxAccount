@@ -46,4 +46,11 @@ public class UserController {
         return RestResponse.Success(userService.getUserInfo(userDto));
     }
 
+    @GetMapping("/getAllUserInfo")
+    public RestResponse<User> getAllUserInfo(){
+        UserDto userDto = userUtil.getUserDto();
+        log.info("获取到的用户id{}",userDto);
+        return RestResponse.Success(userService.getAllUserInfo(userDto));
+    }
+
 }

@@ -4,6 +4,8 @@ import com.tencent.wxcloudrun.dto.UserDto;
 import com.tencent.wxcloudrun.model.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -15,4 +17,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface UserMapper extends BaseMapper<User> {
 
     User selectByWxid(UserDto userInfo);
+
+    List<User> getAllUserInfo();
+
 }

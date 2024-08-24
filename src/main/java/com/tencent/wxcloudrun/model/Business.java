@@ -63,7 +63,7 @@ public class Business implements Serializable {
     private BigDecimal amount;
 
     @TableField(exist = false)
-    private Integer userName;
+    private String userName;
 
 
     public void setCreateTime(String createTime) throws ParseException {

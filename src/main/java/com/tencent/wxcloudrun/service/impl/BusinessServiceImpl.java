@@ -17,6 +17,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,11 +45,15 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     @Override
     public void saveBusiness(Business business) {
         UserDto userDto = userUtil.getUserDto();
+        User user = userUtil.getUser();
         if(Objects.isNull(business)){
             throw new RuntimeException("保存信息不能为空");
         }
         business.setEnable(Boolean.FALSE);
         business.setUserId(userDto.getOpenId());
+        Date date = new Date();
+        business.setCreateTime(date);
+        business.setModifyTime(date);
         log.info(JSON.toJSONString(business));
         if(Objects.isNull(business.getId())){
             this.getBaseMapper().insert(business);

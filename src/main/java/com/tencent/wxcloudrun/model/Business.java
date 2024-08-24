@@ -71,6 +71,18 @@ public class Business implements Serializable {
         this.createTime = parse;
     }
 
+    public void setCreateTime(Date createTime)  {
+        this.createTime = createTime;
+    }
+
+    public void setTime(Date createTime)  {
+        this.time = createTime;
+    }
+
+    public void setModifyTime(Date createTime)  {
+        this.modifyTime = createTime;
+    }
+
     public void setTime(String time)  throws ParseException {
         Date parse = sDateFormat.parse(time);
         this.time = parse;

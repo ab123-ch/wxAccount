@@ -17,7 +17,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 //    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<RestResponse> handleAllExceptions(Exception ex) {
         // 记录日志，处理异常信息
-        RestResponse restResponse = new RestResponse(101, "服务器错误", ex.getMessage());
+        RestResponse restResponse = new RestResponse(101, ex.getMessage());
         return new ResponseEntity(restResponse,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

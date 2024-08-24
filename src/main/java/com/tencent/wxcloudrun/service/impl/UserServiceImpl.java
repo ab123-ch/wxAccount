@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -46,6 +47,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public void save(User user, UserDto userDto) {
+
+        if(Objects.isNull(userDto) && Objects.isNull(user)){
+            throw new RuntimeException("请填写用户名密码");
+        }
+        User user1 = userMapper.selectByWxid(userDto);
+
         user.setOpenId(userDto.getOpenId());
         user.setUnionId(userDto.getUnionId());
         user.setRole(RoleEnum.DEFAULT_ROLE.name());

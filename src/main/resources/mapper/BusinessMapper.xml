@@ -3,7 +3,7 @@
 <mapper namespace="com.tencent.wxcloudrun.dao.BusinessMapper">
 
     <sql id="fields">
-        id,
+               id,
                business_name,
                user_id,
                count,
@@ -22,9 +22,18 @@
     </select>
 
     <select id="selectConfirmBusiness" resultType="com.tencent.wxcloudrun.model.Business">
-        select <include refid="fields"/>
-        from account.business
-        where enable = #{enable}
+        select
+            bu.id,
+            bu.business_name,
+            bu.user_id,
+            bu.count,
+            bu.time,
+            bu.enable,
+            bu.amount,
+            u.username
+        from account.business bu
+        left join user u on bu.user_id = u.user_id
+        where bu.enable = #{enable}
     </select>
 
     <select id="getUserAmountTotal" resultType="com.tencent.wxcloudrun.vo.UserAmountVo">

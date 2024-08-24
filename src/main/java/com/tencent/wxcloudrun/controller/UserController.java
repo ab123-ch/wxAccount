@@ -42,6 +42,9 @@ public class UserController {
     @GetMapping("/getUserInfo")
     public RestResponse<User> getUserInfo(){
         UserDto userDto = userUtil.getUserDto();
+        if(Objects.isNull(userDto)){
+            throw new RuntimeException("openId获取失败");
+        }
         log.info("获取到的用户id{}",userDto);
         return RestResponse.Success(userService.getUserInfo(userDto));
     }

@@ -48,7 +48,7 @@ public class Business implements Serializable {
     private Date modifyTime;
 
     @TableField("user_id")
-    private Integer userId;
+    private String userId;
 
     @TableField("create_user_id")
     private Integer createUserId;

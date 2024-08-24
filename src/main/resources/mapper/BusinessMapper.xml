@@ -30,6 +30,8 @@
             bu.time,
             bu.enable,
             bu.amount,
+            bu.create_time,
+            bu.modify_time,
             u.username
         from account.business bu
         left join user u on bu.user_id = u.open_id

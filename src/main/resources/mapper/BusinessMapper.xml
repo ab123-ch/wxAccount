@@ -32,7 +32,7 @@
             bu.amount,
             u.username
         from account.business bu
-        left join user u on bu.user_id = u.user_id
+        left join user u on bu.user_id = u.open_id
         where bu.enable = #{enable}
     </select>
 
